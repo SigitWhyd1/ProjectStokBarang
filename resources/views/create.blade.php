@@ -18,9 +18,10 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- left column -->
                 <div class="col-md-6">
                     <!-- general form elements -->
@@ -54,9 +55,14 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputBrng_Masuk">Barang Masuk</label>
+                                    <input type="date" name="brng_masuk" class="form-control" id="exampleInputBarangMasuk" placeholder="Enter Barang Masuk">
+                                    @error('brng_masuk')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
-                            <!-- /.card-body -->
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

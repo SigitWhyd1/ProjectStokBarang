@@ -20,7 +20,7 @@
     <!-- /.content-header -->
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- left column -->
                 <div class="col-md-6">
                     <!-- general form elements -->
@@ -53,15 +53,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputBarangMasuk">Barang Masuk</label>
-                                    <input type="date" name="brng_masuk" class="form-control" id="exampleInputBarangMasuk" value="{{ $barang->brng_masuk }}" placeholder="Enter Barang Masuk">
-                                    @error('brng_keluar')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="exampleInputBarangKeluar">Barang Keluar</label>
-                                    <input type="date" name="brng_keluar" class="form-control" id="exampleInputBarangKeluar" value="{{ $barang->brng_keluar }}" placeholder="Enter Barang Keluar">
+                                    <input type="number" name="brng_keluar" class="form-control" id="exampleInputBarangKeluar" value="{{ old('brng_keluar', $barang->brng_keluar) }}" placeholder="Enter Barang Keluar">
                                     @error('brng_keluar')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -69,7 +62,7 @@
                             </div>
                             <!-- /.card-body -->
 
-                            <div class="card-footer">
+                            <div class="card-footer" style="padding-top: 0;">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

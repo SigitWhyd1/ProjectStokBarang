@@ -43,57 +43,57 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nama Barang</th>
-                                        <th>Kode</th>
-                                        <th>Stok</th>
-                                        <th>Barang Keluar</th>
-                                        <th>Action</th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Nama Barang</th>
+                                        <th class="text-center">Kode</th>
+                                        <th class="text-center">Stok</th>
+                                        <th class="text-center">Barang Keluar</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($barang as $d)
                                         <tr>
-                                            <td>{{ $d->id }}</td>
-                                            <td>{{ $d->nama_barang }}</td>
-                                            <td>{{ $d->kode }}</td>
-                                            <td>{{ $d->stok }}</td>
-                                            <td>{{ $d->brng_keluar }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $d->id }}</td>
+                                            <td class="text-center">{{ $d->nama_barang }}</td>
+                                            <td class="text-center">{{ $d->kode }}</td>
+                                            <td class="text-center">{{ $d->stok }}</td>
+                                            <td class="text-center">{{ $d->brng_keluar }}</td>
+                                            <td class="text-center">
                                                 <a href="{{ route('barang.edit', ['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
                                                 <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
-                                                </td>
-                                    </tr>
-                                    <div class="modal fade" id="modal-hapus{{ $d->id }}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Konfirmasi Hapus Barang</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                            </td>
+                                        </tr>
+                                        <div class="modal fade" id="modal-hapus{{ $d->id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Konfirmasi Hapus Barang</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Apakah Yakin Menghapus Barang Ini? <b>{{ $d->nama_barang }}</b></p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <form action="{{ route('barang.delete', ['id' => $d->id]) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Ya, Hapus</button>
+                                                        </form>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <p>Apakah Yakin Menghapus Barang Ini? <b>{{ $d->nama_barang }}</b></p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <form action="{{ route('barang.delete', ['id' => $d->id]) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Ya, Hapus</button>
-                                                    </form>
-                                                </div>
+                                                <!-- /.modal-content -->
                                             </div>
-                                            <!-- /.modal-content -->
+                                            <!-- /.modal-dialog -->
                                         </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
+                                        <!-- /.modal -->
                                     @endforeach
                                     @if($barang->isEmpty())
                                         <tr>
-                                            <td colspan="5">No data found</td>
+                                            <td colspan="6" class="text-center">No data found</td>
                                         </tr>
                                     @endif
                                 </tbody>

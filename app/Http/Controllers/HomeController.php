@@ -14,9 +14,7 @@ class HomeController extends Controller
     }
 
     public function index(){
-
         $barang = Barang::get();
-
         return view('index', compact('barang'));
     }
 
@@ -26,9 +24,10 @@ class HomeController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
-            'nama_barang'            =>  'required|string|max:255',
-            'kode'                   =>  'required|string|max:100',
-            'stok'                   =>  'required|integer',
+            'nama_barang'   => 'required|string|max:255',
+            'kode'          => 'required|string|max:100',
+            'stok'          => 'required|integer',
+            'brng_masuk'    => 'required|date',
         ]);
 
         if($validator->fails()) {
@@ -37,8 +36,9 @@ class HomeController extends Controller
 
         $barang = new Barang();
         $barang->nama_barang = $request->nama_barang;
-        $barang->kode = $request->kode;  // corrected this line
-        $barang->stok = $request->stok;
+        $barang->kode        = $request->kode;
+        $barang->stok        = $request->stok;
+        $barang->brng_masuk  = $request->brng_masuk;
         $barang->save();
 
         return redirect()->route('index');
@@ -53,19 +53,26 @@ class HomeController extends Controller
         $barang = Barang::find($id);
 
         $validator = Validator::make($request->all(),[
-            'nama_barang'            =>  'required|string|max:255',
-            'kode'                   =>  'required|string|max:100',
-            'stok'                   =>  'required|integer',
-            'brng_masuk'             =>  'required|date',
-            'brng_keluar'             =>  'required|date',
+            'nama_barang'   => 'required|string|max:255',
+            'kode'          => 'required|string|max:100',
+            'stok'          => 'required|integer',
+            'brng_masuk'    => 'required|date',
+            'brng_keluar'   => 'required|integer|min:0',
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        // Kurangi stok dengan jumlah barang keluar
+        if ($barang->stok >= $request->brng_keluar) {
+            $barang->stok -= $request->brng_keluar;
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Stok barang tidak mencukupi.');
+        }
+
         $barang->nama_barang = $request->nama_barang;
-        $barang->stok = $request->stok;
+        $barang->kode = $request->kode;
         $barang->brng_masuk = $request->brng_masuk;
         $barang->brng_keluar = $request->brng_keluar;
         $barang->save();

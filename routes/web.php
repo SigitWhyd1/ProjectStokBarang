@@ -36,4 +36,3 @@ Route::delete('/delete/{id}',[HomeController::class, 'delete'])->name('barang.de
 
 Route::get('/indexmasuk', [BrngController::class, 'indexmasuk'])->name('indexmasuk');
 Route::get('/indexkeluar', [BrngController::class, 'indexkeluar'])->name('indexkeluar');
-

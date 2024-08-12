@@ -24,19 +24,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <a href="{{ route('barang.create') }}" class="btn btn-primary mb-3">Tambah Barang</a>
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"></h3>
                             <div class="card-tools">
                                 <form action="{{ route('index') }}" method="GET">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
                                 </form>
                             </div>
                         </div>
@@ -45,28 +44,23 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nama Barang</th>
-                                        <th>Kode</th>
-                                        <th>Stok</th>
-                                        <th>Barang Masuk</th>
-                                        <th>Barang Keluar</th>
-                                        <th>Action</th>
+                                        <th class="text-center text-sm">ID</th>
+                                        <th class="text-center text-sm">Nama Barang</th>
+                                        <th class="text-center text-sm">Kode</th>
+                                        <th class="text-center text-sm">Stok</th>
+                                        <th class="text-center text-sm">Tanggal Masuk</th>
+                                        <th class="text-center text-sm">Barang Keluar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($barang as $d)
                                         <tr>
-                                            <td>{{ $d->id }}</td>
-                                            <td>{{ $d->nama_barang }}</td>
-                                            <td>{{ $d->kode }}</td>
-                                            <td>{{ $d->stok }}</td>
-                                            <td>{{ $d->brng_masuk }}</td>
-                                            <td>{{ $d->brng_keluar }}</td>
-                                            <td>
-                                                <a href="{{ route('barang.edit', ['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                                <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
-                                            </td>
+                                            <td class="text-center text-sm">{{ $d->id }}</td>
+                                            <td class="text-center text-sm">{{ $d->nama_barang }}</td>
+                                            <td class="text-center text-sm">{{ $d->kode }}</td>
+                                            <td class="text-center text-sm">{{ $d->stok }}</td>
+                                            <td class="text-center">{{ \Carbon\Carbon::parse($d->brng_masuk)->format('d-m-Y') }}</td>
+                                            <td class="text-center text-sm">{{ $d->brng_keluar }}</td>
                                         </tr>
                                         <div class="modal fade" id="modal-hapus{{ $d->id }}">
                                             <div class="modal-dialog">
@@ -97,7 +91,7 @@
                                     @endforeach
                                     @if($barang->isEmpty())
                                         <tr>
-                                            <td colspan="6">No data found</td>
+                                            <td colspan="6" class="text-center text-sm">No data found</td>
                                         </tr>
                                     @endif
                                 </tbody>
