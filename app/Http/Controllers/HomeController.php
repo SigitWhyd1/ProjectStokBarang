@@ -68,10 +68,11 @@ class HomeController extends Controller
 
     // Validasi input
     $validator = Validator::make($request->all(), [
-        'nama_barang'   => 'required|string|max:255',
-        'kode'          => 'required|string|max:100',
-        'stok'          => 'nullable|integer|min:0', // Periksa stok_tambah untuk penambahan stok
-        'brng_keluar'   => 'required|integer|min:0',
+        'nama_barang'        => 'required|string|max:255',
+        'kode'               => 'required|string|max:100',
+        'stok'               => 'nullable|integer|min:0',
+        'tanggal_keluar'     => 'nullable|date',
+        'brng_keluar'        => 'required|integer|min:0',
     ]);
 
     if ($validator->fails()) {
@@ -89,6 +90,7 @@ class HomeController extends Controller
     $barang->nama_barang = $request->nama_barang;
     $barang->kode = $request->kode;
     $barang->stok += $request->stok_tambah ?? 0;
+    $barang->tanggal_keluar = now();
     $barang->brng_keluar = $request->brng_keluar;
     $barang->save();
 

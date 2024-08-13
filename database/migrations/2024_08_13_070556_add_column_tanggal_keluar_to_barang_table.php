@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('barang', function (Blueprint $table) {
-            $table->integer('terjual')->default(0)->after('brng_keluar');
+            $table->timestamp('tanggal_keluar')->nullable()->after('terjual');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('barang', function (Blueprint $table) {
-            //
+            $table->dropColumn('tanggal_keluar');
         });
     }
 };

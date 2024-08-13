@@ -41,6 +41,11 @@ Route::get('/logout', [LgnController::class, 'logout'])->name('logout');
     Route::get('/indexmasuk', [BrngController::class, 'indexmasuk'])->name('indexmasuk');
     Route::get('/indexkeluar', [BrngController::class, 'indexkeluar'])->name('indexkeluar');
     
-    //Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+
+    Route::get('/stok-detail', [DashboardController::class, 'stokDetail'])->name('stokDetail');
+    Route::get('/keluar-detail', [DashboardController::class, 'keluarDetail'])->name('keluarDetail');
+    Route::get('/low-stock-detail', [DashboardController::class, 'lowStockDetail'])->name('lowStockDetail');
+    Route::get('/out-of-stock-detail', [DashboardController::class, 'outOfStockDetail'])->name('outOfStockDetail');
 
 

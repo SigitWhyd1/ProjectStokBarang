@@ -59,6 +59,13 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputTanggal_Keluar">Tanggal Keluar</label>
+                                    <input type="date" name="tanggal_keluar" class="form-control" id="exampleInputTanggal_Keluar" placeholder="Enter Tanggal Keluar">
+                                    @error('tanggal_keluar')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

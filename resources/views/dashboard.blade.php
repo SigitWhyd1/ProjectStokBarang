@@ -29,12 +29,12 @@
                     <div class="small-box bg-primary">
                         <div class="inner">
                             <h3>{{ $totalStok }}</h3>
-                            <p>Barang di Stok</p>
+                            <p>Stok</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-box"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('stokDetail') }}" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -42,13 +42,13 @@
                     <!-- kotak kecil -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ $totalTerjual }}</h3>
-                            <p>Barang Terjual</p>
+                            <h3>{{ $totalKeluar }}</h3>
+                            <p>Barang Keluar</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-box-open"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('keluarDetail') }}" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -62,7 +62,7 @@
                         <div class="icon">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('lowStockDetail') }}" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -76,7 +76,7 @@
                         <div class="icon">
                             <i class="fas fa-times-circle"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('outOfStockDetail') }}" class="small-box-footer">Info selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
