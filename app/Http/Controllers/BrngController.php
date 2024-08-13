@@ -9,16 +9,28 @@ use Illuminate\Http\Request;
 class BrngController extends Controller
 {
     // Method untuk menampilkan halaman barang masuk
-    public function indexmasuk(){
-        $barang = Barang::all();
-        return view('barangmasuk',compact('barang'));
+    public function indexmasuk(Request $request){
+        $barang = new Barang;
+
+        if($request->get('search')){
+            $barang = $barang->where('nama_barang', 'LIKE', '%'.$request->get('search').'%');
+        }
+
+        $barang = $barang->get();
+
+        return view('barangmasuk',compact('barang', 'request'));
     }
 
-    public function indexkeluar(){
-        $barang = Barang::all();
-        return view('barangkeluar',compact('barang'));
+    public function indexkeluar(Request $request){
+        $barang = new Barang;
+
+        if($request->get('search')){
+            $barang = $barang->where('nama_barang', 'LIKE', '%'.$request->get('search').'%');
+        }
+
+        $barang = $barang->get();
+
+        return view('barangkeluar',compact('barang', 'request'));
     }
-    
-    
 }
 
