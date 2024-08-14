@@ -18,13 +18,11 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
 
 Route::get('/lgn', [LgnController::class, 'index'])->name('lgn');
 Route::post('/lgn-proses', [LgnController::class, 'lgn_proses'])->name('lgn-proses');
-Route::get('/logout', [LgnController::class, 'logout'])->name('logout');
+
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
@@ -36,8 +34,8 @@ Route::get('/logout', [LgnController::class, 'logout'])->name('logout');
     Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('barang.edit');
     Route::put('/update/{id}', [HomeController::class, 'update'])->name('barang.update');
     Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('barang.delete');
-    
-    // Jika BrngController untuk barang yang masuk/keluar, sebaiknya gunakan route terpisah
+
+
     Route::get('/indexmasuk', [BrngController::class, 'indexmasuk'])->name('indexmasuk');
     Route::get('/indexkeluar', [BrngController::class, 'indexkeluar'])->name('indexkeluar');
     
@@ -47,5 +45,9 @@ Route::get('/logout', [LgnController::class, 'logout'])->name('logout');
     Route::get('/keluar-detail', [DashboardController::class, 'keluarDetail'])->name('keluarDetail');
     Route::get('/low-stock-detail', [DashboardController::class, 'lowStockDetail'])->name('lowStockDetail');
     Route::get('/out-of-stock-detail', [DashboardController::class, 'outOfStockDetail'])->name('outOfStockDetail');
+
+    Route::get('barang/{id}/tambah-stok', [HomeController::class, 'showAddStockForm'])->name('barang.showAddStockForm');
+    Route::post('barang/{id}/tambah-stok', [HomeController::class, 'addStock'])->name('barang.addStock');
+
 
 

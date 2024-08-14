@@ -98,6 +98,27 @@ class HomeController extends Controller
 }
 
 
+    // Menampilkan form tambah stok
+    public function showAddStockForm($id)
+    {
+        $barang = Barang::findOrFail($id);
+        return view('tambah-stok', compact('barang'));
+    }
+
+    // Menambahkan stok
+    public function addStock(Request $request, $id)
+    {
+        $request->validate([
+            'jumlah_stok' => 'required|integer|min:1',
+        ]);
+
+        $barang = Barang::findOrFail($id);
+        $barang->stok += $request->input('jumlah_stok');
+        $barang->save();
+
+        return redirect()->route('index')->with('success', 'Stok berhasil ditambahkan.');
+    }
+
     public function delete(Request $request, $id){
         $barang = Barang::find($id);
 

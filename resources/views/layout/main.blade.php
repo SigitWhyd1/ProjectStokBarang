@@ -62,8 +62,8 @@
                 <p>Barang Keluar</p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
+        <li onclick="handelLogout()" class="nav-item">
+            <a class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>Logout</p>
             </a>
@@ -127,5 +127,12 @@
     <script src="{{ asset ('lte/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset ('lte/dist/js/pages/dashboard.js') }}"></script>
+
+    <script>
+        function handelLogout() {
+            window.location.href = '/lgn';
+        }
+    </script>
+
     </body>
     </html>

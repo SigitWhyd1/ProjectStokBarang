@@ -29,8 +29,8 @@ class LgnController extends Controller
         }
     }
 
-    public function logout(){
-        Auth::logout();
-        return redirect()->route('lgn')->with('success', 'Anda Berhasil Logout');
-    }    
+    //public function logout(){
+        //Auth::logout();
+        //return redirect()->route('lgn')->with('success', 'Anda Berhasil Logout');
+    //}    
 }

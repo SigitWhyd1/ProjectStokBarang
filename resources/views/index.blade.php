@@ -1,4 +1,5 @@
 @extends('layout.main')
+
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -51,6 +52,7 @@
                                         <th class="text-center text-sm">Stok</th>
                                         <th class="text-center text-sm">Tanggal Masuk</th>
                                         <th class="text-center text-sm">Barang Keluar</th>
+                                        <th class="text-center text-sm">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,6 +64,35 @@
                                             <td class="text-center text-sm">{{ $d->stok }}</td>
                                             <td class="text-center">{{ \Carbon\Carbon::parse($d->brng_masuk)->format('d-m-Y') }}</td>
                                             <td class="text-center text-sm">{{ $d->brng_keluar }}</td>
+                                            <td class="text-center">
+                                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStockModal-{{ $d->id }}">Tambah Stok</a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="addStockModal-{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="addStockModalLabel-{{ $d->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="addStockModalLabel-{{ $d->id }}">Tambah Stok Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <form action="{{ route('barang.addStock', $d->id) }}" method="POST">
+                                                                @csrf
+                                                                <div class="modal-body">
+                                                                    <div class="form-group">
+                                                                        <label for="jumlah_stok">Jumlah Stok</label>
+                                                                        <input type="number" id="jumlah_stok" name="jumlah_stok" class="form-control" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                    <button type="submit" class="btn btn-primary">Tambah Stok</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     @if($barang->isEmpty())
@@ -82,6 +113,4 @@
     </section>
     <!-- /.content -->
 </div>
-
-
 @endsection
