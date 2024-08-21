@@ -20,7 +20,7 @@ use App\Http\Controllers\DashboardController;
 
 
 
-Route::get('/lgn', [LgnController::class, 'index'])->name('lgn');
+Route::get('/', [LgnController::class, 'index'])->name('/');
 Route::post('/lgn-proses', [LgnController::class, 'lgn_proses'])->name('lgn-proses');
 
 

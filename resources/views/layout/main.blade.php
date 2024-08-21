@@ -130,7 +130,7 @@
 
     <script>
         function handelLogout() {
-            window.location.href = '/lgn';
+            window.location.href = '/';
         }
     </script>
 
