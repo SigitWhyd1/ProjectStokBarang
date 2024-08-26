@@ -43,4 +43,5 @@ class DashboardController extends Controller
         $barang = Barang::where('stok', 0)->get();
         return view('out-of-stock-detail', compact('barang'));
     }
+
 }
